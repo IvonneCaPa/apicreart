@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ActivityResource;
+use App\Http\Requests\ActivityRequest;
 use Illuminate\Http\Request;
 use App\Models\Activity;
 
@@ -20,5 +21,21 @@ class ActivityController extends Controller
         return response([
             'activity' => new ActivityResource($activity)
         ]);
+    }
+
+    public function store(ActivityRequest $request)
+    {
+        try {
+            $activity = Activity::create($request->all());
+            return response([
+                'activity'=> new ActivityResource($activity),
+                'message' => 'Actividad creada correctamente'
+            ], 201);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response([
+                'error'=>$th->getMessage()
+            ], 500);
+        }
     }
 }
