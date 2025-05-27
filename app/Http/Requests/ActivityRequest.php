@@ -25,7 +25,7 @@ class ActivityRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'site' => 'nullable|string|max:255',
-            'datetime' => 'required|date'
+            'dateTime' => 'required|date'
         ];
     }
 
@@ -41,8 +41,8 @@ class ActivityRequest extends FormRequest
             'title.required' => 'El título es obligatorio.',
             'title.string' => 'El título debe ser una cadena de texto.',
             'title.max' => 'El título no puede exceder 255 caracteres.',
-            'datetime.required' => 'La fecha y hora son obligatorias.',
-            'datetime.date' => 'La fecha y hora deben tener un formato válido.',
+            'dateTime.required' => 'La fecha y hora son obligatorias.',
+            'dateTime.date' => 'La fecha y hora deben tener un formato válido.',
             'site.string' => 'El sitio debe ser una cadena de texto.',
             'site.max' => 'El sitio no puede exceder 255 caracteres.',
             'description.string' => 'La descripción debe ser una cadena de texto.'
