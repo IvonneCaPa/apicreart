@@ -78,7 +78,9 @@ class ActivityTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'role' => User::ADMINISTRADOR
+        ]);
         $token = $user->createToken('Test Token')->accessToken;
         //admin
         $response = $this->withHeaders([
