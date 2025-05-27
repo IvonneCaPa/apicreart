@@ -129,4 +129,27 @@ class ActivityTest extends TestCase
         $response->assertStatus(200);
     }
 
+           //eliminar
+    public function test_a_activity_can_be_delete()
+    {
+        $this->withoutExceptionHandling();
+
+        $token = $this->authenticated();
+
+        $activity = Activity::create([
+            'title' => 'expo',
+            'description' => 'descripcion expo',
+            'site' => 'galeria',
+            'dateTime' => '2025-09-15 17:00:11'
+        ]);
+        
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Accept' => 'application/json'
+        ])->delete(route('api.activity.delete', $activity->id));
+
+        $this->assertCount(0, Activity::all());
+        $response->assertStatus(200);
+    }
+
 }
