@@ -131,7 +131,7 @@ class ActivityTest extends TestCase
         $response->assertStatus(200);
     }
 
-           //eliminar
+    //eliminar
     public function test_a_activity_can_be_delete()
     {
         $this->withoutExceptionHandling();
